@@ -580,6 +580,10 @@ address {
     margin-top: 20px;
 }
 
+.footer_num:hover {
+    color: rgb(14, 230, 150);
+}
+
 .footer_social {
     display: flex;
     width: 160px;
