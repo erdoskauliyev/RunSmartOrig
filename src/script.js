@@ -89,9 +89,116 @@ catalogTabs.forEach((tab, index) => { /* параметры функции об�
     });
 });
 
+const modalButtons = document.querySelectorAll('[data-modal]');
+const modals = document.querySelectorAll('.modal');
+const overlay = document.querySelector('.overlay');
+/* 
+modalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modalId = button.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+
+        overlay.classList.add('active');
+        modal.classList.add('active');
+    })
+}) */
+
+
+modalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+         // Получаем значение атрибута data-modal у текущей кнопки
+      const modalId = button.getAttribute('data-modal');
+       // Получаем элемент модального окна по ID, который мы получили из атрибута data-modal
+      const mod = document.getElementById(modalId);
+      
+      overlay.classList.add('active');
+      mod.classList.add('active');
+    });
+});
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* modalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+         // Получаем значение атрибута data-modal у текущей кнопки
+         const modalId = button.getAttribute('data-modal');
+        
+         // Получаем элемент модального окна по ID, который мы получили из атрибута data-modal
+         const modal = document.getElementById(modalId);
+         
+         // Добавляем класс 'active' к overlay и модальному окну для их отображения
+         overlay.classList.add('active');
+         modal.classList.add('active');
+    });
+});
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+document.addEventListener('DOMContentLoaded', () => {
+    const modalButtons = document.querySelectorAll('[data-modal]');
+    const overlay = document.querySelector('.overlay');
+    const modals = document.querySelectorAll('.modal');
+
+    modalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modalId = button.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            overlay.classList.add('active');
+            modal.classList.add('active');
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('active');
+        modals.forEach(modal => {
+            modal.classList.remove('active');
+        });
+    }); 
+}); */
+ 
 
 
 
