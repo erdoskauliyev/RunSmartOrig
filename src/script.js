@@ -1,52 +1,70 @@
+// Получаем все изображения в слайдере
 const slides = document.querySelectorAll('.slides img')
-let slideIndex = 0;
-let intervalId = 0;
-//initializeSlider();
 
+// Индекс текущего слайда
+let slideIndex = 0;
+
+// Идентификатор интервала для автоматической смены слайдов
+let intervalId = 0;
+
+// Вызываем функцию инициализации слайдера после полной загрузки документа
 document.addEventListener('DOMContentLoaded', initializeSlider);
- 
+
+// Функция инициализации слайдера
 function initializeSlider(){
+    // Проверяем, что в слайдере есть изображения
     if(slides.length > 0) {
+        // Показываем первый слайд
         slides[slideIndex].classList.add('displaySlide')
-        //intervalId = setInterval(nextSlide,5000);
+        // Запускаем автоматическую смену слайдов
+        intervalId = setInterval(nextSlide, 5000);
     }
 }
 
+// Функция для показа определенного слайда по его индексу
 function showSlide(index){
+    // Если индекс больше количества слайдов, переходим на первый слайд
     if(index >= slides.length) {
         slideIndex = 0;
-    } else if(index < 0 ) {
+    } 
+    // Если индекс меньше нуля, переходим на последний слайд
+    else if(index < 0 ) {
         slideIndex = slides.length - 1;
     }
     
-   //console.log(slides.length);
+    // Убираем класс 'displaySlide' у всех слайдов
     slides.forEach(slide => {
         slide.classList.remove('displaySlide')
     });
+    // Показываем слайд с соответствующим индексом
     slides[slideIndex].classList.add('displaySlide');
 }
+
+// Функция для перехода к предыдущему слайду
 function prevSlide(){
     slideIndex--;
     showSlide(slideIndex);
 }
+
+// Функция для перехода к следующему слайду
 function nextSlide(){
     slideIndex++;
     showSlide(slideIndex);
 }
 
 
+// Добавляем класс 'catalog-item_content_active' ко всем элементам '.catalog-item_content'
 const catalogContent = document.querySelectorAll('.catalog-item_content');
-
 catalogContent.forEach(item => {
     item.classList.add('catalog-item_content_active');
 });
 
+// Добавляем обработчики событий клика для каждой ссылки в каталоге
 const catalogLinks = document.querySelectorAll('.catalog-item_link');
-
 catalogLinks.forEach(link => {
-    link.addEventListener('click', function(even) {
-        even.preventDefault(); /* предотвратить переход по ссылкам  */ 
-        const parentItem = even.target.closest('.catalog-item');
+    link.addEventListener('click', function(event) {
+        event.preventDefault(); // Предотвращаем переход по ссылке по умолчанию
+        const parentItem = event.target.closest('.catalog-item');
         const content = parentItem.querySelector('.catalog-item_content');
         content.classList.remove('catalog-item_content_active');
 
@@ -55,13 +73,11 @@ catalogLinks.forEach(link => {
     });
 });
 
-
-
+// Добавляем обработчики событий клика для каждой кнопки "назад" в каталоге
 const catalogBacks = document.querySelectorAll('.catalog-item_back');
-
 catalogBacks.forEach(back => {
     back.addEventListener('click', function(event) {
-        event.preventDefault();/* предотвратить переход по ссылкам  */ 
+        event.preventDefault(); // Предотвращаем переход по ссылке по умолчанию
         const parentBack = event.target.closest('.catalog-item');
         const list = parentBack.querySelector('.catalog-item_list');
         list.classList.remove('catalog-item_list_active');
@@ -71,9 +87,9 @@ catalogBacks.forEach(back => {
     });
 });
 
-const catalogTabs = document.querySelectorAll('.catalog_tab'),
-      catalogContents = document.querySelectorAll('.catalog_content');
-
+// Делаем первую вкладку и соответствующее содержимое активными
+const catalogTabs = document.querySelectorAll('.catalog_tab');
+const catalogContents = document.querySelectorAll('.catalog_content');
 catalogTabs[0].classList.add('catalog_tab_active');
 catalogContents[0].classList.add('catalog_content_active');
 
