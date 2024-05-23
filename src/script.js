@@ -56,6 +56,7 @@ catalogLinks.forEach(link => {
 });
 
 
+
 const catalogBacks = document.querySelectorAll('.catalog-item_back');
 
 catalogBacks.forEach(back => {
@@ -89,36 +90,50 @@ catalogTabs.forEach((tab, index) => { /* параметры функции об�
     });
 });
 
+
+
+// Получение всех элементов с атрибутом data-modal
 const modalButtons = document.querySelectorAll('[data-modal]');
+// Получение всех модальных окон
 const modals = document.querySelectorAll('.modal');
+// Получение оверлея
 const overlay = document.querySelector('.overlay');
-/* 
+
+// Добавление обработчика событий для каждой кнопки открытия модального окна
 modalButtons.forEach(button => {
     button.addEventListener('click', () => {
+        // Получение значения атрибута data-modal у кнопки
         const modalId = button.getAttribute('data-modal');
+        // Получение модального окна по ID
         const modal = document.getElementById(modalId);
 
+        // Добавление классов 'active' для отображения оверлея и модального окна
         overlay.classList.add('active');
         modal.classList.add('active');
-    })
-}) */
-
-
-modalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-         // Получаем значение атрибута data-modal у текущей кнопки
-      const modalId = button.getAttribute('data-modal');
-       // Получаем элемент модального окна по ID, который мы получили из атрибута data-modal
-      const mod = document.getElementById(modalId);
-      
-      overlay.classList.add('active');
-      mod.classList.add('active');
     });
 });
 
+// Добавление обработчика событий для каждой кнопки закрытия модального окна
+modals.forEach(modal => {
+    const closeButton = modal.querySelector('.close'); // Поиск элемента с классом 'close' внутри модального окна
+    if (closeButton) { // Проверка, найден ли элемент
+        closeButton.addEventListener('click', () => {
+            // Удаление классов 'active' для скрытия оверлея и модального окна
+            overlay.classList.remove('active');
+            modal.classList.remove('active');
+        });
+    }
+});
 
-
-
+// Добавление обработчика событий для оверлея
+overlay.addEventListener('click', () => {
+    // Удаление класса 'active' у оверлея для его скрытия
+    overlay.classList.remove('active');
+    // Удаление класса 'active' у всех модальных окон для их скрытия
+    modals.forEach(modal => {
+        modal.classList.remove('active');
+    });
+});
 
 
 
