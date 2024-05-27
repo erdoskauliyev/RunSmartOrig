@@ -152,40 +152,18 @@ overlay.addEventListener('click', () => {
 });
 
 
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* modalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-         // Получаем значение атрибута data-modal у текущей кнопки
-         const modalId = button.getAttribute('data-modal');
-        
-         // Получаем элемент модального окна по ID, который мы получили из атрибута data-modal
-         const modal = document.getElementById(modalId);
-         
-         // Добавляем класс 'active' к overlay и модальному окну для их отображения
-         overlay.classList.add('active');
-         modal.classList.add('active');
-    });
+    if (scrollPosition >= 1700) {
+        document.querySelector('.upBtn').style.display = 'block';
+    } else {
+        document.querySelector('.upBtn').style.display = 'none';
+    };
 });
- */
+
+
+
 
 
 
@@ -208,150 +186,14 @@ overlay.addEventListener('click', () => {
 
 
 /* 
-document.addEventListener('DOMContentLoaded', () => {
-    const modalButtons = document.querySelectorAll('[data-modal]');
-    const overlay = document.querySelector('.overlay');
-    const modals = document.querySelectorAll('.modal');
-
-    modalButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modalId = button.getAttribute('data-modal');
-            const modal = document.getElementById(modalId);
-            overlay.classList.add('active');
-            modal.classList.add('active');
-        });
-    });
-
-    overlay.addEventListener('click', () => {
-        overlay.classList.remove('active');
-        modals.forEach(modal => {
-            modal.classList.remove('active');
-        });
-    }); 
-}); */
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*  
-const catalogTabs = document.querySelectorAll('.catalog_tab');
-
-catalogTabs.forEach(tab => {
-    tab.addEventListener('click', function(event) { 
-        catalogTabs.forEach(t => { 
-            t.classList.remove('catalog_tab_active');
-        });
-        const currentTab = event.target.closest('.catalog_tab');
-        currentTab.classList.add('catalog_tab_active');
-    });
-});
-  */
-
-   /*  const catalogTabs = document.querySelectorAll('.catalog_tab');
-    const catalogContents = document.querySelectorAll('.catalog_content');
-
-    catalogTabs.forEach((tab, index) => {
-        tab.addEventListener('click', function() {
-            // Удаляем активный класс у всех вкладок и содержимого каталога
-            catalogTabs.forEach(t => t.classList.remove('catalog_tab_active'));
-            catalogContents.forEach(c => c.classList.remove('catalog_content_active'));
-
-            // Добавляем активный класс только к выбранной вкладке и соответствующему содержимому каталога
-            tab.classList.add('catalog_tab_active');
-            catalogContents[index].classList.add('catalog_content_active');
-        });
-    });
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* const catalogItemContent = document.querySelectorAll('.catalog-item_content');
-
-catalogItemContent.forEach(item => {
-    item.classList.add('catalog-item_content_active');
-})
-
-const catalogLinks =  document.querySelectorAll('.catalog-item_link');
-const catalogBack = document.querySelectorAll('.catalog-item_back');
-
-catalogLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
-       const parentItem = event.target.closest('.catalog-item');
-       const content = parentItem.querySelector('.catalog-item_content');
-       content.classList.remove('catalog-item_content_active');
-
-       const list = parentItem.querySelector('.catalog-item_list');
-       list.classList.add('catalog-item_list_active');
-    });
-});
-
- catalogBack.forEach(back => {
-    back.addEventListener('click', function(event) {
-        const parentBack = event.target.closest('.catalog-item');
-        const list = parentBack.querySelector('.catalog-item_list');
-        list.classList.remove('catalog-item_list_active');
-
-        const content = parentBack.querySelector('.catalog-item_content');
-        content.classList.add('catalog-item_content_active');
-    });
- });
- */
-
-
-
-
-
-
-
+window.addEventListener('scroll', () =>{
+    const scrollPosition = window.scrollY;
+
+    // Показываем кнопку при прокрутке страницы до 2500px
+    if (scrollPosition >= 1666) {
+        document.querySelector('.upBtn').style.display = 'block';
+    } else {
+        // Скрываем кнопку при обратном скролле
+        document.querySelector('.upBtn').style.display = 'none';
+    }
+});  */
